@@ -1,0 +1,80 @@
+
+<form  [formGroup]="userRegisForm" (ngSubmit)="userregis()">
+
+   <div class="mb-3">
+    <label for="fName" class="form-label">full Name</label>
+    <input type="text" class="form-control" name="fName" id="fName"  formControlName="fullName" [class.is-invalid]="fullName?.invalid" [class.is-valid]="fullName?.valid">
+    <div class="alert alert-warning" [hidden]="fullName?.valid || fullName?.untouched">
+      <small *ngIf="fullName?.errors?.['required']">
+        Full Name must be required
+
+      </small>
+      <small *ngIf="fullName?.errors?.['pattern']">
+        Full Name must be 3 letters at least,<b>{{fullName?.errors?.['pattern'].actualValue}}</b>doesnt match
+      </small>
+    </div>
+
+  </div>
+
+  <div class="mb-3">
+    <label for="uEmail" class="form-label">Email</label>
+    <input type="text" class="form-control" name="uEmail" id="uEmail"  formControlName="email" >
+
+  </div>
+
+  <div class="mb-3">
+    <label for="uPhone" class="form-label">Phone No</label>
+    <input type="text" class="form-control" name="uPhone" id="uPhone"  formControlName="phoneNo" >
+
+  </div>
+  <div formGroupName="address">
+    <div class="mb-3">
+      <label for="uCity" class="form-label">City</label>
+      <input type="text" class="form-control" name="uCity" id="uCity"  formControlName="city" >
+
+    </div>
+    <div class="mb-3">
+      <label for="uPostal" class="form-label">Postal Code</label>
+      <input type="text" class="form-control" name="uPostal" id="uPostal"  formControlName=" postalCode" >
+
+    </div>
+
+    <div class="mb-3">
+      <label for="uStreet" class="form-label">Street</label>
+      <input type="text" class="form-control" name="uStreet" id="uStreet"  formControlName="street" >
+
+    </div>
+
+
+  </div>
+
+  <div class="mb-3">
+    <label for="uPassword" class="form-label">Password</label>
+    <input type="password" class="form-control" name="uPassword" id="uPassword"  formControlName="password" >
+
+  </div>
+
+  <div class="mb-3">
+    <label for="uConfPassword" class="form-label">Confirm Password</label>
+    <input type="password" class="form-control" name="uConfPassword" id="uConfPassword"  formControlName="confirmPassword" >
+
+  </div>
+
+
+
+
+
+
+
+
+  <button  [disabled]="userRegisForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+<div>
+  {{userRegisForm.value | json}}
+
+</div>
+<div>
+  <!-- {{userRegisForm.get('fullName')?.errors | json}} -->
+  {{ fullName?.errors |json}}
+</div>

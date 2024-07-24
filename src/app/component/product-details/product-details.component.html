@@ -1,0 +1,16 @@
+<div class="card" style="width: 30%">
+  <img class="card-img-top" [src]="prd?.imgURL" alt="Card image cap" />
+  <div class="card-body">
+    <h5 class="card-title">{{ prd?.name }}</h5>
+    <div class="caed-text">
+      <div>{{ prd?.price }}</div>
+      <div>{{ prd?.quntatity }}</div>
+    </div>
+    <hr>
+    <!-- <button type="button" class="btn btn-success" (click)="goBack()">Back</button> -->
+    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+      <button type="button" class="btn btn-danger" (click)=" previousPrd()">Perivous</button>
+      <button type="button" class="btn btn-warning" (click)="goBack()">Back</button>
+      <button type="button" class="btn btn-success" (click)="NextPrd()">Next</button>
+  
+    </div>

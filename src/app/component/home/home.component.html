@@ -1,0 +1,21 @@
+<!-- <img src="{{StoreInfo.imgUrl}}" alt="photo" style="margin: -20px;"> -->
+<img
+  [src]="StoreInfo.imgUrl"
+  *ngIf="imageshown"
+  alt="photo"
+  style="margin: -20px"
+/>
+<button
+  (click)="toggle()"
+  type="button"
+  class="btn btn-primary"
+  style="margin-left: 30px"
+>
+  Toggle image
+</button>
+<h1>{{ StoreInfo.name }}</h1>
+
+<h3>Our Branches</h3>
+<ul>
+  <li *ngFor="let item of StoreInfo.branches">{{ item }}</li>
+</ul>

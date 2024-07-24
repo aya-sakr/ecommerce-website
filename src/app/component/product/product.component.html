@@ -1,0 +1,90 @@
+<!-- <div class="mb-3">
+  <label for="category" class="form-label">Categories</label>
+  <select
+    class="form-select form-select-lg"
+    class="form-control"
+    name="categ"
+    id="category"
+    [(ngModel)]="slectedCategoryId"
+    (change)="filterProduct()"
+  >
+    <option selected *ngFor="let categ of catList" [value]="categ.id">
+      {{ categ.name }}
+    </option>
+  </select>
+</div>
+<div>SlectedCategoryId:{{ slectedCategoryId }}</div> -->
+<a
+  name=""
+  id=""
+  class="btn btn-primary"
+  [routerLink]="['/addproduct']"
+  role="button"
+  >New Product</a
+>
+
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Image</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price in USD</th>
+      <th scope="col">Price in EGP</th>
+      <th scope="col">Count</th>
+      <th scope="col">Details</th>
+      <th scope="col">Add</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let prd of prdCat">
+      <td>{{ prd.id }}</td>
+      <td>{{ prd.name }}</td>
+      <td><img LightBox="red" defaultColor="yellow" [src]="prd.imgURL" /></td>
+      <td>
+        <div [ngSwitch]="prd.quntatity">
+          <div *ngSwitchCase="0">out of stock</div>
+          <div *ngSwitchCase="1">last item</div>
+          <div *ngSwitchCase="2">last 2 item</div>
+          <div *ngSwitchDefault>{{ prd.quntatity }}</div>
+        </div>
+      </td>
+      <td>{{ prd.price | currency : "USD" }}</td>
+      <td>{{ prd.price | USD | currency : "EGP" }}</td>
+      <td><input #itemcount type="number" class="form-control" /></td>
+
+      <!-- <td>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="openPrdDetetais(prd.categoryID)"
+        >
+          Details
+        </button>
+        <td> -->
+      <td>
+        <button
+          type="button"
+          class="btn btn-success"
+          [routerLink]="['/product', prd.id]"
+        >
+          Details
+        </button>
+      </td>
+
+      <td>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="Buy(prd.price, itemcount.value)"
+        >
+          Add to card
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <h3>Order Total Price : {{ orderTotalPrice }}</h3> -->
